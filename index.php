@@ -42,4 +42,5 @@ function start_application(): void
 
 enable_error_reporting();
 init_autoloader();
+load_config();
 start_application();

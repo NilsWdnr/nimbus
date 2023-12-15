@@ -7,6 +7,9 @@ use nimbus\Controller;
 final class Login extends Controller {
     public function __construct()
     {
-        echo 'loaded login controller';
+        parent::__construct();
+
+        $this->view->set_title('Login');
+        $this->view->load_view('login');
     }
 }
