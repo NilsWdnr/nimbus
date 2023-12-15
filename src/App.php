@@ -38,7 +38,12 @@ final class App
     {
         $controller_name = ucfirst( $controller );
         $controller_class = "nimbus\\Controller\\{$controller_name}";
+        $index_class = "nimbus\\Controller\\Index";
 
-        new $controller_class();
+        if(class_exists($controller_class)){
+            new $controller_class();
+        } else {
+            new $index_class;
+        }
     }
 }

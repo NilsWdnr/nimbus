@@ -2,9 +2,17 @@
 
 namespace nimbus\Controller;
 
-class Index {
+use nimbus\Controller;
+
+final class Index extends Controller {
     public function __construct()
     {
-        echo 'Index class loaded';
+        if(isset( $_SESSION['login'] )){
+            //load dashboard
+            $this->redirect('/dashboard');
+        } else {
+            //redirect to login
+            $this->redirect('/login');
+        }
     }
 }
