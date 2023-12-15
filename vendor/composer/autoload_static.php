@@ -23,6 +23,7 @@ class ComposerStaticInitb3052acbba104148c49e0a1963b4704f
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'nimbus\\App' => __DIR__ . '/../..' . '/src/App.php',
+        'nimbus\\Controller\\Index' => __DIR__ . '/../..' . '/src/Controller/Index.php',
         'nimbus\\Test' => __DIR__ . '/../..' . '/src/Test.php',
     );
 
