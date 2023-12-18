@@ -5,18 +5,18 @@ namespace nimbus;
 final class View{
     private $page_title;
 
-    public function load_view(string $name) : void
+    public function load_view(string $name, array $args = []) : void
     {
         $view_name = ucfirst($name) . 'View';
         $view_file = VIEWS_DIR . DIRECTORY_SEPARATOR . $view_name . '.php';
 
 
         $this->load_head_template();
-        $this->load_file($view_file);
+        $this->load_file($view_file,$args);
         $this->load_footer_template();
     }
 
-    private function load_file(string $file) : void
+    private function load_file(string $file, array $args = []) : void
     {
 
         if(file_exists($file)){

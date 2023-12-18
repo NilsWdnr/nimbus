@@ -9,7 +9,7 @@ final class Login extends Controller
 {
     private $user;
 
-    public function __construct()
+    public function __construct ()
     {
         parent::__construct();
 
@@ -19,14 +19,16 @@ final class Login extends Controller
     public function index() : void
     {
         $this->view->set_title('Login');
-        $this->view->load_view('login');
 
         if($_POST!==[]){
             if($this->check_login($_POST)){
                 $this->redirect('/dashboard');
             } else {
-                echo 'Login fehlgeschlagen';
+                $messsage = 'Login failed, please check username and password';
+                $this->view->load_view('login',['message'=>$messsage]);
             }
+        } else {
+            $this->view->load_view('login');
         }
     }
 

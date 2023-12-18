@@ -10,6 +10,13 @@ final class Dashboard extends Controller {
 
     public function __construct()
     {
-        echo 'loaded dashboard controller';
+        parent::__construct();
+        // echo 'loaded dashboard controller';
+    }
+
+    public function index() : void
+    {
+        $this->view->set_title('Dashboard');
+        $this->view->load_view('dashboard');
     }
 }
