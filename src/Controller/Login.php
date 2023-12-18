@@ -18,4 +18,8 @@ final class Login extends Controller
 
         $this->user = new User();
     }
+
+    public function index(){
+        echo "index method executed";
+    }
 }

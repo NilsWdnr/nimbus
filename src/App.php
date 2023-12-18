@@ -41,9 +41,11 @@ final class App
         $index_class = "nimbus\\Controller\\Index";
 
         if(class_exists($controller_class)){
-            new $controller_class();
+            $controller = new $controller_class();
+            $controller->index();
         } else {
-            new $index_class;
+            $controller = new $index_class;
+            $controller->index();
         }
     }
 }

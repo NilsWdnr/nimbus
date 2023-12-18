@@ -5,7 +5,7 @@ namespace nimbus\Controller;
 use nimbus\Controller;
 
 final class Index extends Controller {
-    public function __construct()
+    public function index()
     {
         if(isset( $_SESSION['login'] )){
             //load dashboard
