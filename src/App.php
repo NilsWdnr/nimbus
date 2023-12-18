@@ -11,7 +11,7 @@ final class App
 
         $request = $this->parse_URL();
 
-        $this->load_controller($request['controller']);
+        $this->load_controller($request);
     }
 
     // get requested controller, method and argument from url
@@ -34,15 +34,25 @@ final class App
         return $request;
     }
 
-    private function load_controller (string $controller) : void
+    private function load_controller (array $request) : void
     {
-        $controller_name = ucfirst( $controller );
+        $controller_name = ucfirst( $request['controller'] );
         $controller_class = "nimbus\\Controller\\{$controller_name}";
         $index_class = "nimbus\\Controller\\Index";
 
+        $method = strtolower($request['method']);
+
+        $argument = $request['argument'] ? $request['argument'] : '';
+
+        var_dump($method);
+
         if(class_exists($controller_class)){
             $controller = new $controller_class();
-            $controller->index();
+            if(!is_null($method)&&method_exists($controller,$method)){
+                $controller->{$method}($argument);
+            } else {
+                $controller->index();
+            }
         } else {
             $controller = new $index_class;
             $controller->index();

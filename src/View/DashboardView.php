@@ -4,16 +4,31 @@
         <button class="btn btn-light">Beitrag erstellen</button>
 
         <h3 class="mt-5">Beiträge</h3>
-        <?php if(count($args['posts'])>0){
-            foreach($args['posts'] as $post){
-                ?>
-                <h4><?= $post['title'] ?></h4>
+        <?php if (count($args['posts']) > 0) {
+        ?>
+            <table class="table">
+                <thead>
+                    <td><strong>Title</strong></td>
+                    <td><strong>Date</strong></td>
+                    <td></td>
+                </thead>
                 <?php
-            }
+                foreach ($args['posts'] as $post) {
+                ?>
+                    <tr>
+                        <td><?= $post['title'] ?></td>
+                        <td><?= $post['date'] ?></td>
+                        <td><a href="#">edit</a></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
+        <?php
         } else {
-            ?>
+        ?>
             <p>Bisher gibt es noch keine Beiträge.</p>
-            <?php
+        <?php
         } ?>
     </div>
 </div>
