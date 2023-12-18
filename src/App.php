@@ -2,6 +2,8 @@
 
 namespace nimbus;
 
+use Throwable;
+
 final class App
 {
 
@@ -51,7 +53,12 @@ final class App
     
         if (!is_null($method) && method_exists($controller, $method)) {
             if(!is_null($argument)){
-                $controller->{$method}($argument);
+                try {
+                    $controller->{$method}($argument);
+                } catch(Throwable) {
+                    $controller->{$method}();
+                }
+
             } else {
                 $controller->{$method}();
             }
