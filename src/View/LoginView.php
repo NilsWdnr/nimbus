@@ -20,4 +20,7 @@
         }
         ?>
     </div>
+    <div id="credit-container">
+        <p class="mb-0">Photo by <a href="https://unsplash.com/@pawel_czerwinski?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Pawel Czerwinski</a> on <a href="https://unsplash.com/photos/water-splash-in-close-up-photography-5x7kyu3J4Xs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+    </div>
 </div>
