@@ -22,14 +22,28 @@ final class Login extends Controller
         $this->view->load_view('login');
 
         if($_POST!==[]){
-            $this->check_login($_POST);
+            if($this->check_login($_POST)){
+                $this->redirect('/dashboard');
+            } else {
+                echo 'Login fehlgeschlagen';
+            }
         }
     }
 
     private function check_login(array $login_data) : bool
     {
         $found_user = $this->user->find_by_name($login_data['username']);
-        var_dump($found_user);
-        return true;
+        if($found_user===[]){
+            return false;
+        } else if(password_verify($login_data['password'],$found_user['password'])){
+
+            $_SESSION['login'] = [
+                'user_id' => $found_user['id'],
+                'username' => $found_user['username']
+            ];
+            return true;
+        }
+
+        return false;
     }
 }
