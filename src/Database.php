@@ -30,8 +30,11 @@ final class Database
         $select_query = $this->pdo->prepare("SELECT * FROM $table WHERE $identifier = ?");
         $select_query->execute([$value]);
         $results = $select_query->fetchAll(PDO::FETCH_ASSOC);
-        $single_result = $results[0];
-        return $single_result;
+        if(isset($results[0])){
+            return $results[0];
+        } 
+        
+        return [];
     }
 
     //select all results from database
