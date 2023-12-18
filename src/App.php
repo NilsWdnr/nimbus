@@ -34,28 +34,31 @@ final class App
         return $request;
     }
 
-    private function load_controller (array $request) : void
+    private function load_controller(array $request): void
     {
-        $controller_name = ucfirst( $request['controller'] );
+        $controller_name = ucfirst($request['controller']);
         $controller_class = "nimbus\\Controller\\{$controller_name}";
         $index_class = "nimbus\\Controller\\Index";
-
+    
         $method = strtolower($request['method']);
-
-        $argument = $request['argument'] ? $request['argument'] : '';
-
-        var_dump($method);
-
-        if(class_exists($controller_class)){
+        $argument = $request['argument'];
+    
+        if (class_exists($controller_class)) {
             $controller = new $controller_class();
-            if(!is_null($method)&&method_exists($controller,$method)){
-                $controller->{$method}($argument);
-            } else {
-                $controller->index();
-            }
         } else {
             $controller = new $index_class;
+        }
+    
+        if (!is_null($method) && method_exists($controller, $method)) {
+            if(!is_null($argument)){
+                $controller->{$method}($argument);
+            } else {
+                $controller->{$method}();
+            }
+
+        } else {
             $controller->index();
         }
     }
+    
 }
