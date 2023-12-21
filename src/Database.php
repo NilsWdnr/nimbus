@@ -50,7 +50,7 @@ final class Database
     public function select_all (string $table, string $order = "") : array
     {
         $query_string = "SELECT * FROM $table";
-        if($query_string!==""){
+        if($order!==""){
             $query_string .= " ORDER BY $order";
         }
 
@@ -58,5 +58,24 @@ final class Database
         $select_query->execute();
         $results = $select_query->fetchAll(PDO::FETCH_ASSOC);
         return $results;
+    }
+
+    //update database row
+    public function update_where (string $table, array $data, string $identifier, string $value) : void 
+    {
+        $update_string = "";
+        $i = 0;
+        foreach($data as $update_key => $update_value){
+            if($i===0){
+                $update_string .= "$update_key = '$update_value'";
+            } else {
+                $update_string .= ", $update_key = '$update_value'";
+            }
+            $i++;
+        }
+
+        $query_string ="UPDATE $table SET $update_string WHERE $identifier = $value";
+        $update_query = $this->pdo->prepare($query_string);
+        var_dump($update_query->execute());
     }
 }

@@ -16,4 +16,9 @@ final class Post extends Model {
         $post = $this->db->select_where('posts','id',$id);
         return $post;
     }
+
+    public function update(int $id,array $data) : void
+    {
+        $this->db->update_where('posts',$data,'id',$id);
+    }
 }

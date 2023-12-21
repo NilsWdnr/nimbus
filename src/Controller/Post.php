@@ -10,12 +10,23 @@ final class Post extends Controller {
 
     public function __construct()
     {
+        parent::__construct();
         $this->postModel = new PostModel();
     }
 
     public function edit(int $id = 0) : void
     {
         $post = $this->postModel->get_by_id($id);
-        var_dump($post);
+        $this->view->set_title('Edit Post');
+        $this->view->load_view('Edit',$post);
+    }
+
+    public function save(int $id) : void
+    {
+        $update_data = [
+            "title"=>$_POST['title'],
+            "content"=>$_POST['content'],
+        ];
+        $this->postModel->update($id,$update_data);
     }
 }
