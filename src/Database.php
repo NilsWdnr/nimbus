@@ -24,8 +24,29 @@ final class Database
         }
     }
 
+    //insert new row in database
+    public function insert(string $table,array $data) : bool
+    {
+        $columns = array_keys($data);
+        $values =  array_values($data);
+        $value_placeholders = "";
+
+        for($i=0;$i<count($values);$i++){
+            if($i===0){
+                $value_placeholders .= "?";
+            } else {
+                $value_placeholders .= ",?";
+            }
+        }
+
+        $query_string = "INSERT INTO $table (...$columns) values ($value_placeholders)";
+        $insert_query = $this->pdo->prepare($query_string);
+        return $insert_query->execute($values);
+
+    }
+
     //select the first result in database
-    public function select_where (string $table, string $identifier, string $value)
+    public function select_where (string $table, string $identifier, string $value) : array
     {
         $select_query = $this->pdo->prepare("SELECT * FROM $table WHERE $identifier = ?");
         $select_query->execute([$value]);
