@@ -28,6 +28,7 @@ final class Database
     public function insert(string $table,array $data) : bool
     {
         $columns = array_keys($data);
+        $columns_string = implode(',',$columns);
         $values =  array_values($data);
         $value_placeholders = "";
 
@@ -39,7 +40,7 @@ final class Database
             }
         }
 
-        $query_string = "INSERT INTO $table (...$columns) values ($value_placeholders)";
+        $query_string = "INSERT INTO $table ($columns_string) values ($value_placeholders)";
         $insert_query = $this->pdo->prepare($query_string);
         return $insert_query->execute($values);
 
@@ -53,7 +54,7 @@ final class Database
         $results = $select_query->fetchAll(PDO::FETCH_ASSOC);
         if(isset($results[0])){
             return $results[0];
-        } 
+        }
         
         return [];
     }

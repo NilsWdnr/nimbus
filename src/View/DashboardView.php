@@ -1,7 +1,7 @@
 <div id="dashboard">
     <div class="container">
         <h2>Wilkommen, <?= $args['username'] ?></h2>
-        <button class="btn btn-light">Beitrag erstellen</button>
+        <a href="/post/create"><button class="btn btn-light">Beitrag erstellen</button></a>
 
         <h3 class="mt-5">Beiträge</h3>
         <?php if (count($args['posts']) > 0) {

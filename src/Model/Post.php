@@ -21,4 +21,9 @@ final class Post extends Model {
     {
         return $this->db->update_where('posts',$data,'id',$id);
     }
+
+    public function insert($data) : bool
+    {
+        return $this->db->insert('posts',$data);
+    }
 }

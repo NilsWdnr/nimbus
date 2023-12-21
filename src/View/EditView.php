@@ -1,15 +1,33 @@
 <?php
 
-if (count($args) > 0) {
-    $title = $args['title'] ? $args['title'] : "";
-    $content = $args['content'] ? $args['content'] : "";
+$action = "";
+
+if(!isset($args['method'])){
+    throw new Exception('The "method" argument was not passed to the edit post view');
 }
+
+
+switch($args['method']){
+    case 'edit':
+        $action = "/post/save/" . $args['id'];
+        break;
+    case 'create':
+        $action = "/post/save_new/";
+        break;
+    default:
+        $action = "/post/save_new/";
+}
+
+
+    $title = isset($args['title']) ? $args['title'] : "";
+    $content = isset($args['content']) ? $args['content'] : "";
+
 
 ?>
 
 <div id="edit-post">
     <div class="container">
-        <form action="/post/save/<?= $args['id'] ?>" method="POST">
+        <form action="<?= $action ?>" method="POST">
             <div>
                 <label for="title">Title</label>
                 <input class="d-block" type="text" name="title" id="title" value="<?= $title ?>">
