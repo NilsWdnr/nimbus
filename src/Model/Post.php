@@ -17,8 +17,8 @@ final class Post extends Model {
         return $post;
     }
 
-    public function update(int $id,array $data) : void
+    public function update(int $id,array $data) : bool
     {
-        $this->db->update_where('posts',$data,'id',$id);
+        return $this->db->update_where('posts',$data,'id',$id);
     }
 }

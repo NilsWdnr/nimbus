@@ -27,6 +27,10 @@ final class Post extends Controller {
             "title"=>$_POST['title'],
             "content"=>$_POST['content'],
         ];
-        $this->postModel->update($id,$update_data);
+        if($this->postModel->update($id,$update_data)){
+            return;
+        } else {
+            echo 'Fehler beim updaten des Posts';
+        }
     }
 }

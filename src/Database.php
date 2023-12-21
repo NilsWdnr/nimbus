@@ -61,7 +61,7 @@ final class Database
     }
 
     //update database row
-    public function update_where (string $table, array $data, string $identifier, string $value) : void 
+    public function update_where (string $table, array $data, string $identifier, string $value) : bool 
     {
         $update_string = "";
         $i = 0;
@@ -76,6 +76,6 @@ final class Database
 
         $query_string ="UPDATE $table SET $update_string WHERE $identifier = $value";
         $update_query = $this->pdo->prepare($query_string);
-        var_dump($update_query->execute());
+        return $update_query->execute();
     }
 }
