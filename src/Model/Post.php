@@ -7,7 +7,7 @@ use nimbus\Model;
 final class Post extends Model {
     public function get_all() : array
     {
-        $posts = $this->db->select_all('posts','date');
+        $posts = $this->db->select_all('posts','date','desc');
         return $posts;
     }
 

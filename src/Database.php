@@ -69,11 +69,15 @@ final class Database
     }
 
     //select all from database
-    public function select_all (string $table, string $order = "") : array
+    public function select_all (string $table, string $sort_by = "" ,string $order = "") : array
     {
         $query_string = "SELECT * FROM $table";
+        if($sort_by!==""){
+            $query_string .= " ORDER BY $sort_by";
+        }
         if($order!==""){
-            $query_string .= " ORDER BY $order";
+            $order = strtoupper($order);
+            $query_string .= " $order";
         }
 
         $select_query = $this->pdo->prepare($query_string);
