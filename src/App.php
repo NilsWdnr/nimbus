@@ -3,13 +3,17 @@
 namespace nimbus;
 
 use Throwable;
+use nimbus\Controller\Error;
 
 final class App
 {
+    private $error;
 
     public function __construct()
     {
         session_start();
+
+        $this->error = new Error();
 
         $request = $this->parse_URL();
 
@@ -38,34 +42,37 @@ final class App
 
     private function load_controller(array $request): void
     {
-        $controller_name = ucfirst($request['controller']);
-        $controller_class = "nimbus\\Controller\\{$controller_name}";
-        $index_class = "nimbus\\Controller\\Index";
-    
-        $method = strtolower($request['method']);
+        $controllerName = ucfirst($request['controller']);
+        $controllerClass = "nimbus\\Controller\\{$controllerName}";
+        $defaultControllerClass = "nimbus\\Controller\\Index";
+
+        $method = $request['method'] ? strtolower($request['method']) : null;
         $argument = $request['argument'];
-    
-        if (class_exists($controller_class)) {
-            $controller = new $controller_class();
-        } else {
-            $controller = new $index_class;
-        }
-    
-        if (!is_null($method) && method_exists($controller, $method)) {
-            if(!is_null($argument)){
-                try {
+
+        try {
+            $controller = class_exists($controllerClass) ? new $controllerClass() : new $defaultControllerClass();
+
+            if (!is_null($method) && method_exists($controller, $method)) {
+                if (!is_null($argument)) {
                     $controller->{$method}($argument);
-                } catch(Throwable) {
+                } else {
                     $controller->{$method}();
                 }
-
             } else {
-                $controller->{$method}();
+                $controller->index();
             }
-
-        } else {
-            $controller->index();
+        } catch (Throwable $e) {
+            $this->handle_error($e,$controllerName);
         }
     }
-    
+
+    private function handle_error(Throwable $e,mixed $controllerName): void
+    {
+        if(!is_null($controllerName)&&strtolower($controllerName)==="api"){
+            $this->error->api_error($e);
+        } else {
+            $this->error->browser_error($e);
+        }
+    }
+
 }
