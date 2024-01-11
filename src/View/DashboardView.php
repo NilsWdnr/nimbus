@@ -1,5 +1,5 @@
 <div id="dashboard">
-    <div class="container">
+    <div class="container mt-5">
         <h2>Wilkommen, <?= $args['username'] ?></h2>
         <a href="/post/create"><button class="btn btn-light">Beitrag erstellen</button></a>
 

@@ -34,8 +34,15 @@ final class View{
 
     private function load_head_template() : void
     {
-        $template_file = VIEWS_DIR . DIRECTORY_SEPARATOR . 'Templates' . DIRECTORY_SEPARATOR . 'Head.php';
-        $this->load_file($template_file);
+        $template_dir = VIEWS_DIR . DIRECTORY_SEPARATOR . 'Templates';
+
+        $head_template_file = $template_dir . DIRECTORY_SEPARATOR . 'Head.php';
+        $this->load_file($head_template_file);
+
+        if(isset( $_SESSION['login'] )){
+            $sidebar_template_file = $template_dir . DIRECTORY_SEPARATOR . 'Sidebar.php';
+            $this->load_file($sidebar_template_file);
+        }
     }
 
     private function load_footer_template() : void

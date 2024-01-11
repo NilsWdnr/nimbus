@@ -26,7 +26,7 @@ switch($args['method']){
 ?>
 
 <div id="edit-post">
-    <div class="container">
+    <div class="container mt-5">
         <form action="<?= $action ?>" method="POST">
             <div>
                 <label for="title">Title</label>
