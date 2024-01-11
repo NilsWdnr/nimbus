@@ -31,6 +31,7 @@ final class Dashboard extends Controller {
         ];
 
         $this->view->set_title('Dashboard');
+        $this->view->show_sidebar();
         $this->view->load_view('dashboard',$view_args);
     }
 }

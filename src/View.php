@@ -4,6 +4,12 @@ namespace nimbus;
 
 final class View{
     private $page_title;
+    private $navbar_visible;
+
+    public function __construct()
+    {
+        $this->navbar_visible = false;
+    }
 
     public function load_view(string $name, array $args = []) : void
     {
@@ -32,6 +38,11 @@ final class View{
         $this->page_title = $title;
     }
 
+    //call function if the sidebar should be loaded. Must be called before 'load view' for it to affect the view
+    public function show_sidebar() : void {
+        $this->navbar_visible = true;
+    }
+
     private function load_head_template() : void
     {
         $template_dir = VIEWS_DIR . DIRECTORY_SEPARATOR . 'Templates';
@@ -39,10 +50,11 @@ final class View{
         $head_template_file = $template_dir . DIRECTORY_SEPARATOR . 'Head.php';
         $this->load_file($head_template_file);
 
-        if(isset( $_SESSION['login'] )){
+        if($this->navbar_visible===true){
             $sidebar_template_file = $template_dir . DIRECTORY_SEPARATOR . 'Sidebar.php';
             $this->load_file($sidebar_template_file);
         }
+
     }
 
     private function load_footer_template() : void
