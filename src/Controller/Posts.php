@@ -6,7 +6,7 @@ use Exception;
 use nimbus\Controller;
 use nimbus\Model\Post as PostModel;
 
-final class Post extends Controller {
+final class Posts extends Controller {
     private $postModel;
 
     public function __construct()
