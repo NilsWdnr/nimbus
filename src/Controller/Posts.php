@@ -21,6 +21,7 @@ final class Posts extends Controller {
         $args = [...$post];
         $args['method'] = "edit";
         $this->view->set_title('Edit Post');
+        $this->view->show_sidebar();
         $this->view->load_view('Edit',$args);
     }
 
@@ -44,6 +45,7 @@ final class Posts extends Controller {
         ];
 
         $this->view->set_title('Create Post');
+        $this->view->show_sidebar();
         $this->view->load_view('Edit',$args);
     }
 

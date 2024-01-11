@@ -240,5 +240,12 @@ body .content-wrapper {
 body .content-wrapper .content {
   width: calc(100vw - 200px);
 }
+body #error-message {
+  box-shadow: inset 0px 0px 15px 1px #1D1D20;
+  background-color: white;
+  color: #1D1D20;
+  padding: 25px;
+  border-radius: 8px;
+}
 
 /*# sourceMappingURL=main.css.map */
