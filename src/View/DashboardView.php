@@ -18,7 +18,7 @@
                     <tr>
                         <td><?= $post['title'] ?></td>
                         <td><?= $post['date'] ?></td>
-                        <td><a href="#">edit</a></td>
+                        <td><a href="/post/edit/<?= $post['id'] ?>">edit</a></td>
                     </tr>
                 <?php
                 }
