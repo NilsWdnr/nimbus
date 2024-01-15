@@ -35,7 +35,7 @@ final class Posts extends Controller {
         $args['method'] = "edit";
         $this->view->set_title('Edit Post');
         $this->view->show_sidebar();
-        $this->view->load_view('Edit',$args);
+        $this->view->load_view('PostEdit',$args);
     }
 
     public function save(int $id) : void
@@ -59,7 +59,7 @@ final class Posts extends Controller {
 
         $this->view->set_title('Create Post');
         $this->view->show_sidebar();
-        $this->view->load_view('Edit',$args);
+        $this->view->load_view('PostEdit',$args);
     }
 
     public function save_new() : void

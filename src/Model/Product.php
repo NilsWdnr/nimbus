@@ -7,7 +7,7 @@ use nimbus\Model;
 final class Product extends Model {
     public function get_all() : array
     {
-        $products = $this->db->select_all('products','date','desc');
+        $products = $this->db->select_all('products','date_created','desc');
         return $products;
     }
 

@@ -27,7 +27,7 @@
             <?php
             } else {
             ?>
-                <p>Bisher gibt es noch keine Beiträge.</p>
+                <p>Bisher gibt es noch keine Produkte.</p>
             <?php
             } ?>
         </div>

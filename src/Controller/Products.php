@@ -11,6 +11,7 @@ final class Products extends Controller {
 
     public function __construct()
     {
+        parent::__construct();
         $this->productModel = new ProductModel;
     }
 
