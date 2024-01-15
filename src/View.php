@@ -48,7 +48,7 @@ final class View{
     {
         $template_dir = VIEWS_DIR . DIRECTORY_SEPARATOR . 'Templates';
 
-        $head_template_file = $template_dir . DIRECTORY_SEPARATOR . 'Head.php';
+        $head_template_file = $template_dir . DIRECTORY_SEPARATOR . 'Header.php';
         $this->load_file($head_template_file);
 
         if($this->navbar_visible===true){

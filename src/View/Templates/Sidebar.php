@@ -1,4 +1,4 @@
-<aside>
+<aside id="sidebar">
     <nav>
         <ul class="m-0 p-0">
             <li>

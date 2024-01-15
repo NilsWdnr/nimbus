@@ -64,19 +64,26 @@ body {
         }
     }
 
-    aside {
+    aside#sidebar {
         position: fixed;
         left: 0;
-        top: 0;
-        height: 100vh;
+        top: 43px;
+        height: calc(100vh - 43px);
         width: 200px;
         background-color: #202025;
         border-right: solid 1px #303437;
         transform: translateX(-100%);
         transition: 0.3s;
+        z-index: 100;
+
+        &.active {
+            transform: translateX(0%);
+        }
 
         @media screen and (min-width: 992px) {
             transform: translateX(0%);
+            top: 0;
+            height: 100vh;
         }
 
         nav {
@@ -149,13 +156,38 @@ body {
         }
     }
 
+    header {
+        width: 100%;
+        height: 43px;
+        background-color: #202025;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 200;
+
+        #mobile-menu-toggle {
+            width: 25px;
+            height: 25px;
+            background-image: url('../images/menu.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+    }
+
     .content-wrapper {
         width: 100%;
-        display: flex;
-        justify-content: flex-end;
 
-        .content {
-            width: calc(100vw - 200px);
+        @media screen and (min-width: 992px) {
+            display: flex;
+            justify-content: flex-end;
+
+            .content {
+                width: calc(100vw - 200px);
+            }
         }
     }
 
@@ -163,7 +195,11 @@ body {
 
         input#title,
         textarea#content {
-            width: 80%;
+            width: 100%;
+
+            @media screen and (min-width: 992px) {
+                width: 80%;
+            }
         }
 
         input#title {
