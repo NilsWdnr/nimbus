@@ -159,8 +159,31 @@ body {
         }
     }
 
+    #edit-post {
+
+        input#title,
+        textarea#content {
+            width: 80%;
+        }
+
+        input#title {
+            height: 40px;
+            padding: 0px 10px;
+        }
+
+        textarea#content {
+            height: 350px;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+    }
+
     #error-message {
-        box-shadow: inset 0px 0px 15px 1px rgba(29,29,32,0.2);
+        box-shadow: inset 0px 0px 15px 1px rgba(29, 29, 32, 0.2);
         background-color: white;
         color: #ce3434;
         padding: 25px;

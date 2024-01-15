@@ -245,6 +245,22 @@ body .content-wrapper {
 body .content-wrapper .content {
   width: calc(100vw - 200px);
 }
+body #edit-post input#title,
+body #edit-post textarea#content {
+  width: 80%;
+}
+body #edit-post input#title {
+  height: 40px;
+  padding: 0px 10px;
+}
+body #edit-post textarea#content {
+  height: 350px;
+}
+body #edit-post label {
+  display: inline-block;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
 body #error-message {
   box-shadow: inset 0px 0px 15px 1px rgba(29, 29, 32, 0.2);
   background-color: white;

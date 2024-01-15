@@ -35,7 +35,16 @@ $content = isset($args['content']) ? $args['content'] : "";
                 </div>
                 <div class="mt-4">
                     <label for="title_image">Image</label>
-                    <input type="file" name="title_image" id="title_image">
+                    <input class="d-block" type="file" name="title_image" id="title_image">
+                    <?php
+                    if ($args['method'] === "edit" && isset($args['title_image']) && $args['title_image'] !== "") {
+                    ?>
+                        <div class="mt-2">
+                            Current Image: <?= $args['title_image'] ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="mt-4">
                     <label for="content">Content</label>
