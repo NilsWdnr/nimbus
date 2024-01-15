@@ -136,6 +136,13 @@ body {
                             width: 17px;
                             height: 17px;
                         }
+
+                        &.jobs::before {
+                            //quelle: https://www.flaticon.com/free-icon/settings_3524659
+                            background-image: url('../images/icons/jobs.png');
+                            width: 17px;
+                            height: 17px;
+                        }
                     }
                 }
             }
@@ -153,9 +160,9 @@ body {
     }
 
     #error-message {
-        box-shadow: inset 0px 0px 15px 1px #1D1D20;
+        box-shadow: inset 0px 0px 15px 1px rgba(29,29,32,0.2);
         background-color: white;
-        color: #1D1D20;
+        color: #ce3434;
         padding: 25px;
         border-radius: 8px;
     }

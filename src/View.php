@@ -2,6 +2,8 @@
 
 namespace nimbus;
 
+use Error;
+
 final class View{
     private $page_title;
     private $navbar_visible;
@@ -28,8 +30,7 @@ final class View{
         if(file_exists($file)){
             include_once($file);
         } else {
-            echo 'Error: The requested view file could not be found';
-            die;
+            throw new Error('The view template you are trying to load does not exist. This is the file you tried to include: ' . $file);
         }
     }
 

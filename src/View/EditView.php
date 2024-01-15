@@ -9,13 +9,13 @@ if (!isset($args['method'])) {
 
 switch ($args['method']) {
     case 'edit':
-        $action = "/post/save/" . $args['id'];
+        $action = "/posts/save/" . $args['id'];
         break;
     case 'create':
-        $action = "/post/save_new/";
+        $action = "/posts/save_new/";
         break;
     default:
-        $action = "/post/save_new/";
+        $action = "/posts/save_new/";
 }
 
 

@@ -15,6 +15,19 @@ final class Posts extends Controller {
         $this->postModel = new PostModel();
     }
 
+    public function index() : void
+    {
+        $posts = $this->postModel->get_all();
+
+        $view_args = [
+            'posts' => $posts
+        ];
+
+        $this->view->set_title('Posts');
+        $this->view->show_sidebar();
+        $this->view->load_view('posts',$view_args);
+    }
+
     public function edit(int $id = 0) : void
     {
         $post = $this->postModel->get_by_id($id);

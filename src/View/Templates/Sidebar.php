@@ -11,6 +11,9 @@
                 <a class="products" href="/products">Products</a>
             </li>
             <li>
+                <a class="jobs" href="/jobs">Jobs</a>
+            </li>
+            <li>
                 <a class="settings" href="/settings">Settings</a>
             </li>
         </ul>

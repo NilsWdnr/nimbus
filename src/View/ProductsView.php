@@ -1,11 +1,10 @@
-<div id="dashboard" class="content-wrapper">
+<div id="products" class="content-wrapper">
     <div class="content">
         <div class="container mt-5">
-            <h2>Wilkommen, <?= $args['username'] ?></h2>
-            <a href="/posts/create"><button class="btn btn-light">Beitrag erstellen</button></a>
+            <h3>Produkte</h3>
 
-            <h3 class="mt-5">Beiträge</h3>
-            <?php if (count($args['posts']) > 0) {
+            <a href="/post/create"><button class="btn btn-light mt-3 mb-4">Produkt erstellen</button></a>
+            <?php if (count($args['products']) > 0) {
             ?>
                 <table class="table">
                     <thead>
@@ -17,8 +16,8 @@
                     foreach ($args['posts'] as $post) {
                     ?>
                         <tr>
-                            <td><?= $post['title'] ?></td>
-                            <td><?= $post['date'] ?></td>
+                            <td><?= $post['section'] ?></td>
+                            <td></td>
                             <td><a href="/posts/edit/<?= $post['id'] ?>">edit</a></td>
                         </tr>
                     <?php
