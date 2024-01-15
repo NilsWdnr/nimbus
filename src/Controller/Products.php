@@ -27,4 +27,15 @@ final class Products extends Controller {
         $this->view->show_sidebar();
         $this->view->load_view('Products',$view_args);
     }
+
+    public function create() : void
+    {
+        $args = [
+            'method' => 'create'
+        ];
+
+        $this->view->set_title('Create Product');
+        $this->view->show_sidebar();
+        $this->view->load_view('PostEdit',$args);
+    }
 }

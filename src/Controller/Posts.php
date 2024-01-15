@@ -64,10 +64,19 @@ final class Posts extends Controller {
 
     public function save_new() : void
     {
+        $title_image = "";
+        if(isset($_FILES["title_image"])){
+            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'posts';
+            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["title_image"]["name"]);
+            move_uploaded_file($_FILES["title_image"]["tmp_name"], $image_file);
+            $title_image = $_FILES["title_image"]["name"];
+        }
+
         $create_data = [
             'title'=>$_POST['title'],
             'content'=>$_POST['content'],
-            'date'=>date("Y-m-d H:i:s")
+            'date'=>date("Y-m-d H:i:s"),
+            'title_image'=>$title_image
         ];
 
         if($this->postModel->insert($create_data)){

@@ -28,10 +28,14 @@ $content = isset($args['content']) ? $args['content'] : "";
 <div id="edit-post" class="content-wrapper">
     <div class="content">
         <div class="container mt-5">
-            <form action="<?= $action ?>" method="POST">
+            <form action="<?= $action ?>" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="title">Title</label>
                     <input class="d-block" type="text" name="title" id="title" value="<?= $title ?>">
+                </div>
+                <div class="mt-4">
+                    <label for="title_image">Image</label>
+                    <input type="file" name="title_image" id="title_image">
                 </div>
                 <div class="mt-4">
                     <label for="content">Content</label>

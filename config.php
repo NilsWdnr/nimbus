@@ -4,6 +4,7 @@
 
 define('ROOT_DIR',__DIR__);
 define('VIEWS_DIR',__DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'View');
+define('INCLUDE_IMAGES_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'include' . DIRECTORY_SEPARATOR . 'images');
 
 define('DB_HOST','localhost');
 define('DB_NAME','nimbus');
