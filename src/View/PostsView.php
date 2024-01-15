@@ -6,10 +6,11 @@
             <a href="/posts/create"><button class="btn btn-light mt-3 mb-4">Beitrag erstellen</button></a>
             <?php if (count($args['posts']) > 0) {
             ?>
-                <table class="table">
+                <table class="table overview-table">
                     <thead>
                         <td><strong>Title</strong></td>
                         <td><strong>Date</strong></td>
+                        <td></td>
                         <td></td>
                     </thead>
                     <?php
@@ -18,7 +19,8 @@
                         <tr>
                             <td><?= $post['title'] ?></td>
                             <td><?= $post['date'] ?></td>
-                            <td><a href="/posts/edit/<?= $post['id'] ?>">edit</a></td>
+                            <td><a class="edit-link" href="/posts/edit/<?= $post['id'] ?>">edit</a></td>
+                            <td><a class="delete-link" href="/post/delete/<?= $post['id'] ?>">delete</a></td>
                         </tr>
                     <?php
                     }

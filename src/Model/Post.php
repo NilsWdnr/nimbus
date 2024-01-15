@@ -26,4 +26,9 @@ final class Post extends Model {
     {
         return $this->db->insert('posts',$data);
     }
+
+    public function delete(int $id) : bool
+    {
+        return $this->db->delete_where('posts','id',$id);
+    }
 }

@@ -275,6 +275,12 @@ body .content-wrapper {
     width: calc(100vw - 200px);
   }
 }
+body .overview-table a.edit-link {
+  color: #070b0b;
+}
+body .overview-table a.delete-link {
+  color: #c00;
+}
 body #edit-post input#title,
 body #edit-post textarea#content {
   width: 100%;

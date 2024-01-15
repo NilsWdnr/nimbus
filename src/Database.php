@@ -104,4 +104,10 @@ final class Database
         $update_query = $this->pdo->prepare($query_string);
         return $update_query->execute();
     }
+
+    public function delete_where (string $table, string $identifier, string $value) : bool
+    {
+        $delete_query = $this->pdo->prepare("DELETE FROM $table WHERE $identifier = ?");
+        return $delete_query->execute([$value]);
+    }
 }

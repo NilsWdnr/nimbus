@@ -191,6 +191,16 @@ body {
         }
     }
 
+    .overview-table {
+        a.edit-link {
+            color: #070b0b;
+        }
+
+        a.delete-link {
+            color: #c00;
+        }
+    }
+
     #edit-post {
 
         input#title,
