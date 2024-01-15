@@ -1,3 +1,6 @@
+<header class="px-3">
+    <div id="mobile-menu-toggle"></div>
+</header>
 <aside id="sidebar">
     <nav>
         <ul class="m-0 p-0">

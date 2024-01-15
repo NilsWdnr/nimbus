@@ -11,6 +11,3 @@
 </head>
 
 <body>
-    <header class="px-3">
-        <div id="mobile-menu-toggle"></div>
-    </header>
