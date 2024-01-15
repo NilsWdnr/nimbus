@@ -167,6 +167,10 @@ body {
         left: 0;
         z-index: 200;
 
+        @media screen and (min-width: 992px) {
+            display: none;
+        }
+
         #mobile-menu-toggle {
             width: 25px;
             height: 25px;
@@ -201,10 +205,17 @@ body {
         }
     }
 
-    #edit-post {
+    .edit {
+
+        input[type="text"], textarea, select {
+            background-color: white;
+            background-color: white;
+            border: none;
+        }
 
         input#title,
-        textarea#content {
+        textarea#content,
+        textarea#description {
             width: 100%;
 
             @media screen and (min-width: 992px) {
@@ -212,7 +223,8 @@ body {
             }
         }
 
-        input#title {
+        input#title,
+        input#price {
             height: 40px;
             padding: 0px 10px;
         }
@@ -221,10 +233,19 @@ body {
             height: 350px;
         }
 
+        textarea#description {
+            height: 200px;
+        }
+
         label {
             display: inline-block;
             font-size: 22px;
             margin-bottom: 4px;
+        }
+
+        select#product_type {
+            height: 30px;
+            width: 150px;
         }
     }
 

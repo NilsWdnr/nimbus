@@ -42,7 +42,7 @@ final class Posts extends Controller
     public function delete(int $id): void
     {
         if ($this->postModel->delete($id)) {
-            $this->redirect('/dashboard');
+            $this->redirect($_SERVER['HTTP_REFERER']);
         } else {
             throw new Exception('Es ist ein Fehler beim löschen des Posts aufgetreten.');
         }

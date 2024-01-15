@@ -25,7 +25,7 @@ $content = isset($args['content']) ? $args['content'] : "";
 
 ?>
 
-<div id="edit-post" class="content-wrapper">
+<div id="edit-post" class="content-wrapper edit">
     <div class="content">
         <div class="container mt-5">
             <form action="<?= $action ?>" method="POST" enctype="multipart/form-data">

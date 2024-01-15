@@ -20,7 +20,7 @@
                             <td><?= $post['title'] ?></td>
                             <td><?= $post['date'] ?></td>
                             <td><a class="edit-link" href="/posts/edit/<?= $post['id'] ?>">edit</a></td>
-                            <td><a class="delete-link" href="/post/delete/<?= $post['id'] ?>">delete</a></td>
+                            <td><a class="delete-link" href="/posts/delete/<?= $post['id'] ?>">delete</a></td>
                         </tr>
                     <?php
                     }

@@ -254,6 +254,11 @@ body header {
   left: 0;
   z-index: 200;
 }
+@media screen and (min-width: 992px) {
+  body header {
+    display: none;
+  }
+}
 body header #mobile-menu-toggle {
   width: 25px;
   height: 25px;
@@ -281,27 +286,42 @@ body .overview-table a.edit-link {
 body .overview-table a.delete-link {
   color: #c00;
 }
-body #edit-post input#title,
-body #edit-post textarea#content {
+body .edit input[type=text], body .edit textarea, body .edit select {
+  background-color: white;
+  background-color: white;
+  border: none;
+}
+body .edit input#title,
+body .edit textarea#content,
+body .edit textarea#description {
   width: 100%;
 }
 @media screen and (min-width: 992px) {
-  body #edit-post input#title,
-body #edit-post textarea#content {
+  body .edit input#title,
+body .edit textarea#content,
+body .edit textarea#description {
     width: 80%;
   }
 }
-body #edit-post input#title {
+body .edit input#title,
+body .edit input#price {
   height: 40px;
   padding: 0px 10px;
 }
-body #edit-post textarea#content {
+body .edit textarea#content {
   height: 350px;
 }
-body #edit-post label {
+body .edit textarea#description {
+  height: 200px;
+}
+body .edit label {
   display: inline-block;
   font-size: 22px;
   margin-bottom: 4px;
+}
+body .edit select#product_type {
+  height: 30px;
+  width: 150px;
 }
 body #error-message {
   box-shadow: inset 0px 0px 15px 1px rgba(29, 29, 32, 0.2);

@@ -3,7 +3,7 @@
         <div class="container mt-5">
             <h3>Produkte</h3>
 
-            <a href="/post/create"><button class="btn btn-light mt-3 mb-4">Produkt erstellen</button></a>
+            <a href="/products/create"><button class="btn btn-light mt-3 mb-4">Produkt erstellen</button></a>
             <?php if (count($args['products']) > 0) {
             ?>
                 <table class="table">
@@ -18,7 +18,7 @@
                         <tr>
                             <td><?= $post['section'] ?></td>
                             <td></td>
-                            <td><a href="/posts/edit/<?= $post['id'] ?>">edit</a></td>
+                            <td><a href="/products/edit/<?= $post['id'] ?>">edit</a></td>
                         </tr>
                     <?php
                     }
