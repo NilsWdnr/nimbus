@@ -44,6 +44,16 @@ final class Posts extends Controller {
             "title"=>$_POST['title'],
             "content"=>$_POST['content'],
         ];
+
+        if(isset($_FILES["title_image"])){
+            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'posts';
+            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["title_image"]["name"]);
+            move_uploaded_file($_FILES["title_image"]["tmp_name"], $image_file);
+            $title_image = $_FILES["title_image"]["name"];
+
+            $update_data["title_image"]=$title_image;
+        }
+
         if($this->postModel->update($id,$update_data)){
             $this->redirect('/dashboard');
         } else {
