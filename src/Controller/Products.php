@@ -39,13 +39,32 @@ final class Products extends Controller {
         $this->view->load_view('ProductEdit',$args);
     }
 
+    public function edit(int $id) : void
+    {
+        $product = $this->productModel->get_by_id($id);
+        $args = [...$product];
+        $args['method'] = "edit";
+
+        $this->view->set_title('Edit Product');
+        $this->view->show_sidebar();
+        $this->view->load_view('ProductEdit', $args);
+    }
+
     public function save_new(): void
     {
         if (isset($_FILES["product_image"])) {
+            // $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
+            // $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["product_image"]["name"]);
+            // move_uploaded_file($_FILES["product_image"]["tmp_name"], $image_file);
+            // $product_image = $_FILES["product_image"]["name"];
+
+            //sanitize file name
             $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
-            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["product_image"]["name"]);
+            $original_file_name = $_FILES["product_image"]["name"];
+            $cleaned_file_name = str_replace(' ', '_', $original_file_name);
+            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
             move_uploaded_file($_FILES["product_image"]["tmp_name"], $image_file);
-            $product_image = $_FILES["product_image"]["name"];
+            $product_image = $cleaned_file_name;
         }
 
         $create_data = [
