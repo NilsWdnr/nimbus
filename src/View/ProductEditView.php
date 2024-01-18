@@ -33,8 +33,8 @@ $price = isset($args['price']) ? $args['price'] : "";
                     <input class="d-block" type="text" name="title" id="title" value="<?= $title ?>">
                 </div>
                 <div class="mt-4">
-                    <label for="title_image">Product Images</label>
-                    <input class="d-block" type="file" name="title_image" id="title_image" multiple>
+                    <label for="product_image">Product Images</label>
+                    <input class="d-block" type="file" name="product_image" id="product_image">
                     <?php
                     if ($args['method'] === "edit" && isset($args['title_image']) && $args['title_image'] !== "") {
                     ?>

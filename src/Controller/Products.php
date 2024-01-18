@@ -38,4 +38,29 @@ final class Products extends Controller {
         $this->view->show_sidebar();
         $this->view->load_view('ProductEdit',$args);
     }
+
+    public function save_new(): void
+    {
+        if (isset($_FILES["product_image"])) {
+            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
+            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["product_image"]["name"]);
+            move_uploaded_file($_FILES["product_image"]["tmp_name"], $image_file);
+            $product_image = $_FILES["product_image"]["name"];
+        }
+
+        $create_data = [
+            'title' => $_POST['title'],
+            'description' => $_POST['description'],
+            'price' => $_POST['price'],
+            'product_type' => $_POST['product_type'],
+            'product_images' => $product_image,
+            'date_created' => date("Y-m-d H:i:s"),
+        ];
+
+        if($this->productModel->insert($create_data)){
+            $this->redirect('/products');
+        } else {
+            throw new Exception('Fehler beim Erstellen des Produktes');
+        }
+    }
 }

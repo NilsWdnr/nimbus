@@ -100,7 +100,7 @@ final class Posts extends Controller
         ];
 
         if ($this->postModel->insert($create_data)) {
-            $this->redirect('/dashboard');
+            $this->redirect('/posts');
         } else {
             throw new Exception('Fehler beim Erstellen des Posts');
         }
