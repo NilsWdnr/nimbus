@@ -88,6 +88,7 @@ final class Database
     //update database row
     public function update_where(string $table, array $data, string $identifier, string $value): bool
     {
+        $keys = array_keys($data);
         $values = array_values($data);
 
         $update_string = "";
@@ -104,7 +105,7 @@ final class Database
         //     $i++;
         // }
 
-        foreach ($data as $update_key => $update_value) {
+        foreach ($keys as $update_key) {
             if ($i === 0) {
                 $update_string .= "$update_key = ?";
             } else {

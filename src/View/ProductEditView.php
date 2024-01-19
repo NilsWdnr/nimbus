@@ -58,8 +58,8 @@ $price = isset($args['price']) ? $args['price'] : "";
                         <div class="ms-sm-3 mt-3 mt-sm-0 mb-4 mb-sm-0">
                             <label for="product-type">Product Type</label>
                             <select class="d-block" name="product_type" id="product_type">
-                                <option value="hoodie">Hoodie</option>
-                                <option value="shirt">Shirt</option>
+                                <option value="hoodie" <?= (isset($args['product_type'])&&$args['product_type']==="hoodie") ? 'selected' : '' ?>>Hoodie</option>
+                                <option value="shirt" <?= (isset($args['product_type'])&&$args['product_type']==="shirt") ? 'selected' : '' ?>>Shirt</option>
                             </select>
                         </div>
                     </div>
