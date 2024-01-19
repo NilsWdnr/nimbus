@@ -11,13 +11,7 @@ final class Dashboard extends Controller {
     public function __construct()
     {
         parent::__construct();
-        // echo 'loaded dashboard controller';
-
-        // only allowed if logged in
-        if(!isset($_SESSION['login'])){
-            $this->redirect('/login');
-        }
-
+        $this->GuestsOnly();
         $this->post = new Post();
     }
 

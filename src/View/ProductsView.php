@@ -12,6 +12,7 @@
                         <td><strong>Type</strong></td>
                         <td><strong>Date</strong></td>
                         <td></td>
+                        <td></td>
                     </thead>
                     <?php
                     foreach ($args['products'] as $product) {
@@ -21,6 +22,7 @@
                             <td><?= $product['product_type'] ?></td>
                             <td><?= $product['date_created'] ?></td>
                             <td><a class="edit-link" href="/products/edit/<?= $product['id'] ?>">edit</a></td>
+                            <td><a class="delete-link" href="/products/delete/<?= $product['id'] ?>">delete</a></td>
                         </tr>
                     <?php
                     }

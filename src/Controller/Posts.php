@@ -8,11 +8,13 @@ use nimbus\Model\Post as PostModel;
 
 final class Posts extends Controller
 {
+
     private $postModel;
 
     public function __construct()
     {
         parent::__construct();
+        $this->GuestsOnly();
         $this->postModel = new PostModel();
     }
 
@@ -42,7 +44,12 @@ final class Posts extends Controller
     public function delete(int $id): void
     {
         if ($this->postModel->delete($id)) {
-            $this->redirect($_SERVER['HTTP_REFERER']);
+            if(isset($_SERVER['HTTP_REFERER'])){
+                $this->redirect($_SERVER['HTTP_REFERER']);
+            } else {
+                $this->redirect('/posts');
+            }
+
         } else {
             throw new Exception('Es ist ein Fehler beim löschen des Posts aufgetreten.');
         }

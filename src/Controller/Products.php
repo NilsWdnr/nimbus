@@ -14,6 +14,7 @@ final class Products extends Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->GuestsOnly();
         $this->productModel = new ProductModel;
         $this->validation = new Validation;
     }
@@ -51,6 +52,19 @@ final class Products extends Controller {
         $this->view->set_title('Edit Product');
         $this->view->show_sidebar();
         $this->view->load_view('ProductEdit', $args);
+    }
+
+    public function delete(int $id): void
+    {
+        if ($this->productModel->delete($id)) {
+            if(isset($_SERVER['HTTP_REFERER'])){
+                $this->redirect($_SERVER['HTTP_REFERER']);
+            } else {
+                $this->redirect('/products');
+            }
+        } else {
+            throw new Exception('Es ist ein Fehler beim löschen des Posts aufgetreten.');
+        }
     }
 
     public function save(int $id): void

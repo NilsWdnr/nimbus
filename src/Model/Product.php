@@ -26,4 +26,9 @@ final class Product extends Model {
     {
         return $this->db->insert('products',$data);
     }
+
+    public function delete(int $id) : bool
+    {
+        return $this->db->delete_where('products','id',$id);
+    }
 }

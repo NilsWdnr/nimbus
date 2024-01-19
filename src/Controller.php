@@ -18,4 +18,14 @@ abstract class Controller
         header( "Location: {$location}" );
         exit();
     }
+
+    protected function GuestsOnly(): void
+    {
+        if(!isset( $_SESSION['login'] )){
+            //load dashboard
+            $this->redirect('/dashboard');
+        }
+    }
+
+
 }
