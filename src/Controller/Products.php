@@ -4,15 +4,18 @@ namespace nimbus\Controller;
 
 use Exception;
 use nimbus\Controller;
+use nimbus\Model\Validation;
 use nimbus\Model\Product as ProductModel;
 
 final class Products extends Controller {
     private $productModel;
+    private $validation;
 
     public function __construct()
     {
         parent::__construct();
         $this->productModel = new ProductModel;
+        $this->validation = new Validation;
     }
 
     public function index() : void
@@ -73,6 +76,9 @@ final class Products extends Controller {
 
     public function save_new(): void
     {
+        $this->validation->set_rules(['title'=>'required']);
+
+
         $product_image = "";
 
         if (isset($_FILES["product_image"])) {
