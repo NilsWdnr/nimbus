@@ -65,7 +65,7 @@ final class Posts extends Controller
         }
 
         if ($this->postModel->update($id, $update_data)) {
-            $this->redirect('/dashboard');
+            $this->redirect('/posts');
         } else {
             throw new Exception('Es ist ein Fehler beim Speichern des Posts aufgetreten.');
         }

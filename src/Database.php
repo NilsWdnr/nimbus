@@ -91,17 +91,21 @@ final class Database
     {
         $update_string = "";
         $i = 0;
-        foreach($data as $update_key => $update_value){
-            if($i===0){
-                $update_string .= "$update_key = '$update_value'";
+        foreach ($data as $update_key => $update_value) {
+            $value_to_append = is_string($update_value) ? "'$update_value'" : $update_value;
+        
+            if ($i === 0) {
+                $update_string .= "$update_key = $value_to_append";
             } else {
-                $update_string .= ", $update_key = '$update_value'";
+                $update_string .= ", $update_key = $value_to_append";
             }
+        
             $i++;
         }
 
         $query_string ="UPDATE $table SET $update_string WHERE $identifier = $value";
         $update_query = $this->pdo->prepare($query_string);
+        var_dump($update_query);
         return $update_query->execute();
     }
 

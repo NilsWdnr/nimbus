@@ -53,7 +53,7 @@ $price = isset($args['price']) ? $args['price'] : "";
                     <div class="d-sm-flex">
                         <div>
                             <label for="price">Price (€)</label>
-                            <input class="d-block" type="text" name="price" id="price">
+                            <input class="d-block" type="text" name="price" id="price" value="<?= $price ?>">
                         </div>
                         <div class="ms-sm-3 mt-3 mt-sm-0 mb-4 mb-sm-0">
                             <label for="product-type">Product Type</label>
