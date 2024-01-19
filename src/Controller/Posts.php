@@ -56,10 +56,7 @@ final class Posts extends Controller
         ];
 
         if (isset($_FILES["title_image"])) {
-            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'posts';
-            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["title_image"]["name"]);
-            move_uploaded_file($_FILES["title_image"]["tmp_name"], $image_file);
-            $title_image = $_FILES["title_image"]["name"];
+            $title_image = $this->save_image($_FILES["title_image"]);
 
             $update_data["title_image"] = $title_image;
         }
@@ -86,18 +83,7 @@ final class Posts extends Controller
     {
         $title_image = "";
         if (isset($_FILES["title_image"])) {
-            // $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'posts';
-            // $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["title_image"]["name"]);
-            // move_uploaded_file($_FILES["title_image"]["tmp_name"], $image_file);
-            // $title_image = $_FILES["title_image"]["name"];
-
-            // sanitize file name
-            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'posts';
-            $original_file_name = $_FILES["title_image"]["name"];
-            $cleaned_file_name = str_replace(' ', '_', $original_file_name);
-            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
-            move_uploaded_file($_FILES["title_image"]["tmp_name"], $image_file);
-            $title_image = $cleaned_file_name;
+            $title_image = $this->save_image($_FILES["title_image"]);
         }
 
         $create_data = [
@@ -112,5 +98,15 @@ final class Posts extends Controller
         } else {
             throw new Exception('Fehler beim Erstellen des Posts');
         }
+    }
+
+    private function save_image(array $image) : string 
+    {
+        $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'posts';
+        $original_file_name = $image["name"];
+        $cleaned_file_name = str_replace(' ', '_', $original_file_name);
+        $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
+        move_uploaded_file($image["tmp_name"], $image_file);
+        return $cleaned_file_name;
     }
 }

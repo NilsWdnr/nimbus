@@ -60,14 +60,7 @@ final class Products extends Controller {
         ];
 
         if (isset($_FILES["product_image"])) {
-            //sanitize file name
-            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
-            $original_file_name = $_FILES["product_image"]["name"];
-            $cleaned_file_name = str_replace(' ', '_', $original_file_name);
-            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
-            move_uploaded_file($_FILES["product_image"]["tmp_name"], $image_file);
-            $product_image = $cleaned_file_name;
-
+            $product_image = $this->save_image($_FILES["product_image"]);
             $update_data['product_images'] = $product_image;
         }
 
@@ -80,6 +73,8 @@ final class Products extends Controller {
 
     public function save_new(): void
     {
+        $product_image = "";
+
         if (isset($_FILES["product_image"])) {
             // $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
             // $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["product_image"]["name"]);
@@ -87,12 +82,7 @@ final class Products extends Controller {
             // $product_image = $_FILES["product_image"]["name"];
 
             //sanitize file name
-            $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
-            $original_file_name = $_FILES["product_image"]["name"];
-            $cleaned_file_name = str_replace(' ', '_', $original_file_name);
-            $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
-            move_uploaded_file($_FILES["product_image"]["tmp_name"], $image_file);
-            $product_image = $cleaned_file_name;
+            $product_image = $this->save_image($_FILES["product_image"]);
         }
 
         $create_data = [
@@ -109,5 +99,15 @@ final class Products extends Controller {
         } else {
             throw new Exception('Fehler beim Erstellen des Produktes');
         }
+    }
+
+    private function save_image(array $image): string 
+    {
+        $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
+        $original_file_name = $image["name"];
+        $cleaned_file_name = str_replace(' ', '_', $original_file_name);
+        $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
+        move_uploaded_file($image["tmp_name"], $image_file);
+        return $cleaned_file_name;
     }
 }
