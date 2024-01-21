@@ -22,8 +22,7 @@ abstract class Controller
     protected function GuestsOnly(): void
     {
         if(!isset( $_SESSION['login'] )){
-            //load dashboard
-            $this->redirect('/dashboard');
+            $this->redirect('/login');
         }
     }
 

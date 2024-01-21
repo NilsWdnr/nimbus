@@ -319,7 +319,7 @@ body .edit label {
   font-size: 22px;
   margin-bottom: 4px;
 }
-body .edit select#product_type {
+body .edit select {
   height: 30px;
   width: 150px;
 }
