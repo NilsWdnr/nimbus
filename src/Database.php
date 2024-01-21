@@ -85,6 +85,15 @@ final class Database
         return $results;
     }
 
+    public function select_limit(string $table, int $limit, string $sort_by = "id", string $order = "DESC"): array
+    {
+        $select_query = $this->pdo->prepare("SELECT * FROM $table ORDER BY $sort_by $order LIMIT :limit");
+        $select_query->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $select_query->execute();
+        $results = $select_query->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+    
     //update database row
     public function update_where(string $table, array $data, string $identifier, string $value): bool
     {

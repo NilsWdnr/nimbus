@@ -11,6 +11,12 @@ final class Post extends Model {
         return $posts;
     }
 
+    public function get_amount(int $id) : array
+    {
+       $posts = $this->db->select_limit('posts',3,'date');
+       return $posts;
+    }
+
     public function get_by_id(int $id) : array
     {
         $post = $this->db->select_where('posts','id',$id);

@@ -16,9 +16,16 @@ final class Api extends Controller {
         header('Content-Type: application/json; charset=utf-8');
     }
 
-    public function posts() : void
+    // get all posts or a specific amount of posts
+    public function posts(int $amount = 0) : void
     {
-        $posts = $this->post->get_all();
+        $posts = [];
+        if($amount === 0){
+            $posts = $this->post->get_all();
+        } else {
+            $posts = $this->post->get_amount($amount);
+        }
+
         echo json_encode($posts);
     }
 
