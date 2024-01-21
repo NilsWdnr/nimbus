@@ -47,7 +47,7 @@ $product_type = isset($args['product_type']) ? $args['product_type'] : "";
                     ?>
                 </div>
                 <div class="mt-4">
-                    <label for="content">Description</label>
+                    <label for="description">Description</label>
                     <textarea class="d-block" name="description" id="description"><?= $description ?></textarea>
                 </div>
                 <div class="mt-4">

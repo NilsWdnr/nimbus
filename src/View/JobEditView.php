@@ -51,8 +51,10 @@ $description = isset($args['description']) ? $args['description'] : "";
                         </div>
                     </div>
                     <div class="mt-4">
-
+                        <label for="description">Description</label>
+                        <textarea class="d-block" name="description" id="description"><?= $description ?></textarea>
                     </div>
+                    <input type="submit" value="save" class="btn btn-light mt-4">
                 </form>
         </div>
     </div>

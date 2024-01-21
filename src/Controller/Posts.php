@@ -31,7 +31,7 @@ final class Posts extends Controller
         $this->view->load_view('posts', $view_args);
     }
 
-    public function edit(int $id = 0): void
+    public function edit(int $id): void
     {
         $post = $this->postModel->get_by_id($id);
         $args = [...$post];
