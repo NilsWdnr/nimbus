@@ -21,6 +21,7 @@ switch ($args['method']) {
 
 $title = isset($args['title']) ? $args['title'] : "";
 $content = isset($args['content']) ? $args['content'] : "";
+$preview = isset($args['preview']) ? $args['preview'] : "";
 
 
 ?>
@@ -45,6 +46,10 @@ $content = isset($args['content']) ? $args['content'] : "";
                     <?php
                     }
                     ?>
+                </div>
+                <div class="mt-4">
+                    <label for="preview">Preview</label>
+                    <textarea class="d-block" name="preview" id="preview"><?= $preview ?></textarea>
                 </div>
                 <div class="mt-4">
                     <label for="content">Content</label>

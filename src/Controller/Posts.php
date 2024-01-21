@@ -60,6 +60,7 @@ final class Posts extends Controller
         $update_data = [
             "title" => $_POST['title'],
             "content" => $_POST['content'],
+            "preview" => $_POST['preview']
         ];
 
         if (isset($_FILES["title_image"])) {
@@ -96,6 +97,7 @@ final class Posts extends Controller
         $create_data = [
             'title' => $_POST['title'],
             'content' => $_POST['content'],
+            "preview" => $_POST['preview'],
             'date' => date("Y-m-d H:i:s"),
             'title_image' => $title_image
         ];

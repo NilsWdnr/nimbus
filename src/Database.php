@@ -102,17 +102,6 @@ final class Database
 
         $update_string = "";
         $i = 0;
-        // foreach ($data as $update_key => $update_value) {
-        //     $value_to_append = is_string($update_value) ? "'$update_value'" : $update_value;
-
-        //     if ($i === 0) {
-        //         $update_string .= "$update_key = $value_to_append";
-        //     } else {
-        //         $update_string .= ", $update_key = $value_to_append";
-        //     }
-
-        //     $i++;
-        // }
 
         foreach ($keys as $update_key) {
             if ($i === 0) {

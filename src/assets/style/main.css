@@ -293,13 +293,15 @@ body .edit input[type=text], body .edit textarea, body .edit select {
 }
 body .edit input#title,
 body .edit textarea#content,
-body .edit textarea#description {
+body .edit textarea#description,
+body .edit textarea#preview {
   width: 100%;
 }
 @media screen and (min-width: 992px) {
   body .edit input#title,
 body .edit textarea#content,
-body .edit textarea#description {
+body .edit textarea#description,
+body .edit textarea#preview {
     width: 80%;
   }
 }
