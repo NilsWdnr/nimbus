@@ -13,6 +13,12 @@ class Job extends Model
         return $jobs;
     }
 
+    public function get_amount(int $id): array
+    {
+        $jobs = $this->db->select_limit('jobs',$id,'date_created');
+        return $jobs;
+    }
+
     public function get_by_id(int $id): array
     {
         $job = $this->db->select_where('jobs', 'id', $id);

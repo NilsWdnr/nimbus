@@ -28,8 +28,8 @@ final class App
         $url_parts = explode('/', $url_lower);
 
         $controller = $url_parts[0] !== '' ? $url_parts[0] : 'index';
-        $method = $url_parts[1] ?? NULL;
-        $argument = $url_parts[2] ?? NULL;
+        $method = isset($url_parts[1]) && $url_parts[1] !== "" ? $url_parts[1] : NULL;
+        $argument = isset($url_parts[2]) && $url_parts[2] !== "" ? $url_parts[2] : NULL;
 
         $request = [
             'controller' => $controller,

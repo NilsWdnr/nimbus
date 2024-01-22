@@ -4,15 +4,17 @@ namespace nimbus\Controller;
 
 use nimbus\Controller;
 use nimbus\Model\Post;
-use nimbus\Model\User;
+use nimbus\Model\Job;
 
 final class Api extends Controller {
     private $post;
+    private $job;
 
     public function __construct()
     {
         parent::__construct();
         $this->post = new Post();
+        $this->job = new Job();
         header('Content-Type: application/json; charset=utf-8');
     }
 
@@ -37,6 +39,18 @@ final class Api extends Controller {
         } else {
             echo json_encode($post);
         }
+    }
+
+    public function jobs(int $amount = 0) : void
+    {
+        $jobs = [];
+        if($amount === 0){
+            $jobs = $this->job->get_all();
+        } else {
+            $jobs = $this->job->get_amount($amount);
+        }
+
+        echo json_encode($jobs);
     }
 
     public function send_message(string $message){

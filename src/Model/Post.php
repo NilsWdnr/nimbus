@@ -13,7 +13,7 @@ final class Post extends Model {
 
     public function get_amount(int $id) : array
     {
-       $posts = $this->db->select_limit('posts',3,'date');
+       $posts = $this->db->select_limit('posts',$id,'date');
        return $posts;
     }
 
