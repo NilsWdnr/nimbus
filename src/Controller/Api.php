@@ -53,6 +53,16 @@ final class Api extends Controller {
         echo json_encode($jobs);
     }
 
+    public function job(int $id): void
+    {
+        $job = $this->job->get_by_id($id);
+        if($job===[]){
+            echo json_encode(NULL);
+        } else {
+            echo json_encode($job);
+        }
+    }
+
     public function send_message(string $message){
         echo json_encode($message);
     }
