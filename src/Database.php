@@ -59,10 +59,26 @@ final class Database
     }
 
     //select all results from database
-    public function select_all_where(string $table, string $identifier, string $value): array
+    public function select_all_where(string $table, array $conditions): array
     {
-        $select_query = $this->pdo->prepare("SELECT * FROM $table WHERE $identifier = ?");
-        $select_query->execute([$value]);
+        $query_string = "SELECT * FROM $table";
+
+        $i = 0;
+        foreach($conditions as $condition => $value){
+            if($i === 0){
+                $query_string .= " WHERE $condition = ?";
+            } else {
+                $query_string .= " AND $condition = ?";
+            }
+
+            $i++;
+        }
+
+
+        $values = array_values($conditions);
+
+        $select_query = $this->pdo->prepare($query_string);
+        $select_query->execute($values);
         $results = $select_query->fetchAll(PDO::FETCH_ASSOC);
         return $results;
     }

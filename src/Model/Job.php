@@ -19,6 +19,12 @@ class Job extends Model
         return $jobs;
     }
 
+    public function get_all_filtered($filters): array
+    {
+        $jobs = $this->db->select_all_where('jobs', $filters);
+        return $jobs;
+    }
+
     public function get_by_id(int $id): array
     {
         $job = $this->db->select_where('jobs', 'id', $id);
