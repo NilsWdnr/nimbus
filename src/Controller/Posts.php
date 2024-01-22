@@ -63,7 +63,7 @@ final class Posts extends Controller
             "preview" => $_POST['preview']
         ];
 
-        if (isset($_FILES["title_image"])) {
+        if (isset($_FILES["title_image"])&&$_FILES["title_image"]["name"]!=="") {
             $title_image = $this->save_image($_FILES["title_image"]);
 
             $update_data["title_image"] = $title_image;
