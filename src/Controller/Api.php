@@ -4,6 +4,7 @@ namespace nimbus\Controller;
 
 use Exception;
 use nimbus\Controller;
+use nimbus\Model\Validation;
 use nimbus\Model\Post;
 use nimbus\Model\Job;
 use Throwable;
@@ -12,12 +13,14 @@ final class Api extends Controller
 {
     private $post;
     private $job;
+    private $validation;
 
     public function __construct()
     {
         parent::__construct();
         $this->post = new Post();
         $this->job = new Job();
+        $this->validation = new Validation();
         header('Content-Type: application/json; charset=utf-8');
     }
 
@@ -75,6 +78,32 @@ final class Api extends Controller
             echo json_encode(NULL);
         } else {
             echo json_encode($job);
+        }
+    }
+
+    public function contact(array $data): void {
+        if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            throw new Exception('Please send a post request with the form data');
+            return;
+        }
+
+        $this->validation->set_rules([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'your message' => 'required'
+        ]);
+
+        if($this->validation->validate($data)){
+            return;
+        } else {
+            $messages = $this->validation->get_messages();
+            $return_data = [
+                'success' => false,
+                'messages' => $messages
+            ];
+
+            echo json_encode($return_data);
         }
     }
 

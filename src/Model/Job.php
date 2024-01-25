@@ -21,6 +21,11 @@ class Job extends Model
 
     public function get_all_filtered($filters): array
     {
+        foreach($filters as $filter => $value){
+            if(strtolower($value)==="all"){
+                unset($filters[$filter]);
+            }
+        }
         $jobs = $this->db->select_all_where('jobs', $filters);
         return $jobs;
     }
