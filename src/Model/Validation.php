@@ -18,16 +18,17 @@ class Validation
     public function validate(array $data): bool
     {
         $this->input_data = $data;
+        $success = true;
 
         foreach ($this->rules as $field => $field_rules) {
             $field_rules = explode('|', $field_rules);
 
             if (!$this->validate_field($field, $field_rules)) {
-                return false;
+                $success = false;
             };
         }
 
-        return true;
+        return $success;
     }
 
     private function validate_field(string $field, array $rules): bool
@@ -38,7 +39,7 @@ class Validation
             }
 
             try{
-                $this->{$rule}();
+                $this->{$rule}($field);
             } catch (Exception $e){
                 $message = $e->getMessage();
                 $this->error_messages[$field] = $message;

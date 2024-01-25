@@ -81,11 +81,13 @@ final class Api extends Controller
         }
     }
 
-    public function contact(array $data): void {
+    public function contact(): void {
         if($_SERVER['REQUEST_METHOD'] !== 'POST') {
             throw new Exception('Please send a post request with the form data');
             return;
         }
+
+        $data = json_decode(file_get_contents("php://input"), true);
 
         $this->validation->set_rules([
             'first_name' => 'required',
