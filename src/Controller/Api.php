@@ -93,20 +93,18 @@ final class Api extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
-            'your message' => 'required'
+            'message' => 'required'
         ]);
 
-        if($this->validation->validate($data)){
-            return;
-        } else {
-            $messages = $this->validation->get_messages();
-            $return_data = [
-                'success' => false,
-                'messages' => $messages
-            ];
+        $success = $this->validation->validate($data);
+        $messages = $this->validation->get_messages();
 
-            echo json_encode($return_data);
-        }
+        $return_data = [
+            'success' => $success,
+            'messages' => $messages
+        ];
+
+        echo json_encode($return_data);
     }
 
     public function send_message(string $message)
