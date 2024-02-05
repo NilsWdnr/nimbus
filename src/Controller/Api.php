@@ -57,6 +57,13 @@ final class Api extends Controller
         echo json_encode($products);
     }
 
+    //get single product by id
+    public function product(int $id): void
+    {
+        $product = $this->product->get_by_id($id);
+        echo json_encode($product);
+    }
+
     public function jobs(int $amount = 0): void
     {
         $jobs = [];

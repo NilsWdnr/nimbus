@@ -98,11 +98,6 @@ final class Products extends Controller {
         $product_image = "";
 
         if (isset($_FILES["product_image"])) {
-            // $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
-            // $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($_FILES["product_image"]["name"]);
-            // move_uploaded_file($_FILES["product_image"]["tmp_name"], $image_file);
-            // $product_image = $_FILES["product_image"]["name"];
-
             //sanitize file name
             $product_image = $this->save_image($_FILES["product_image"]);
         }
