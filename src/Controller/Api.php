@@ -7,11 +7,13 @@ use nimbus\Controller;
 use nimbus\Model\Validation;
 use nimbus\Model\Post;
 use nimbus\Model\Job;
+use nimbus\Model\Product;
 use Throwable;
 
 final class Api extends Controller
 {
     private $post;
+    private $product;
     private $job;
     private $validation;
 
@@ -19,6 +21,7 @@ final class Api extends Controller
     {
         parent::__construct();
         $this->post = new Post();
+        $this->product = new Product();
         $this->job = new Job();
         $this->validation = new Validation();
         header('Content-Type: application/json; charset=utf-8');
@@ -45,6 +48,13 @@ final class Api extends Controller
         } else {
             echo json_encode($post);
         }
+    }
+
+    //get all products
+    public function products(): void
+    {
+        $products = $this->product->get_all();
+        echo json_encode($products);
     }
 
     public function jobs(int $amount = 0): void

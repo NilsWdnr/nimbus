@@ -5,7 +5,7 @@ namespace nimbus;
 use nimbus\App;
 
 // Specify the allowed domain
-$allowedDomain = 'http://localhost:3000';
+$allowedDomain = 'http://localhost:3001';
 
 // Allow requests only from the specified domain
 header('Access-Control-Allow-Origin: ' . $allowedDomain);

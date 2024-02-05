@@ -76,7 +76,9 @@ final class Products extends Controller {
             'product_type' => $_POST['product_type'],
         ];
 
-        if (isset($_FILES["product_image"])) {
+        var_dump($_FILES);
+
+        if (isset($_FILES["product_image"])&&$_FILES["product_image"]["name"]!=="") {
             $product_image = $this->save_image($_FILES["product_image"]);
             $update_data['product_images'] = $product_image;
         }
