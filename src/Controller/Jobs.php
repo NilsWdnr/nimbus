@@ -70,6 +70,7 @@ final class Jobs extends Controller {
             "title" => $_POST['title'],
             "time_model" => $_POST['time_model'],
             "section" => $_POST['section'],
+            "location" => $_POST['location'],
             "description" => $_POST['description']
         ];
 
@@ -86,6 +87,7 @@ final class Jobs extends Controller {
             "title" => $_POST['title'],
             "time_model" => $_POST['time_model'],
             "section" => $_POST['section'],
+            "location" => $_POST['location'],
             "description" => $_POST['description'],
             "date_created" => date("Y-m-d H:i:s")
         ];

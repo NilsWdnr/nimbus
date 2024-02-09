@@ -4,27 +4,15 @@ namespace nimbus;
 
 use nimbus\App;
 
-// Specify the allowed domain
-$allowedDomain = 'http://localhost:3001';
-
-// Allow requests only from the specified domain
+$allowedDomain = 'http://localhost:3000';
 header('Access-Control-Allow-Origin: ' . $allowedDomain);
-
-// Allow credentials (if needed)
 header('Access-Control-Allow-Credentials: true');
-
-// Allow specific HTTP methods (e.g., GET, POST, OPTIONS)
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-
-// Allow specific HTTP headers
 header('Access-Control-Allow-Headers: Content-Type');
-
-// Set the maximum age for preflight requests (in seconds)
 header('Access-Control-Max-Age: 86400');
 
-// Handle preflight requests (OPTIONS method)
+//handle preflight requests (OPTIONS method)
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    // Respond with a 200 OK status
     header('HTTP/1.1 200 OK');
     exit();
 }

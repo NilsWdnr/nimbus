@@ -19,6 +19,7 @@ switch ($args['method']) {
 
 $title = isset($args['title']) ? $args['title'] : "";
 $section = isset($args['section']) ? $args['section'] : "";
+$location = isset($args['location']) ? $args['location'] : "";
 $time_model = isset($args['time_model']) ? $args['time_model'] : "";
 $description = isset($args['description']) ? $args['description'] : "";
 
@@ -42,12 +43,16 @@ $description = isset($args['description']) ? $args['description'] : "";
                                 <option value="Audio Engineer" <?= ($section === "Audio Engineer") ? 'selected' : '' ?>>Audio Engineer</option>
                             </select>
                         </div>
-                        <div>
+                        <div class="me-3">
                             <label for="time_model">Time Model</label>
                             <select class="d-block" name="time_model" id="time_model">
                                 <option value="Full Time" <?= ($time_model === "Full Time") ? 'selected' : '' ?>>Full Time</option>
                                 <option value="Part Time" <?= ($time_model === "Part Time") ? 'selected' : '' ?>>Part Time</option>
                             </select>
+                        </div>
+                        <div>
+                            <label for="location">Location</label>
+                            <input class="d-block" type="text" name="location" id="location" value="<?= $location ?>">
                         </div>
                     </div>
                     <div class="mt-4">

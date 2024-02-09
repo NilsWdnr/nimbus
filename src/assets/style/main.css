@@ -310,6 +310,9 @@ body .edit input#price {
   height: 40px;
   padding: 0px 10px;
 }
+body .edit input#location {
+  height: 30px;
+}
 body .edit textarea#content {
   height: 350px;
 }
