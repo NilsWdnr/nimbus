@@ -40,7 +40,7 @@ $description = isset($args['description']) ? $args['description'] : "";
                             <select class="d-block" name="section" id="section">
                                 <option value="Game Art" <?= ($section === "Game Art") ? 'selected' : '' ?>>Game Art</option>
                                 <option value="Game Development" <?= ($section === "Game Development") ? 'selected' : '' ?>>Game Development</option>
-                                <option value="Audio Engineer" <?= ($section === "Audio Engineer") ? 'selected' : '' ?>>Audio Engineer</option>
+                                <option value="Audio Engineering" <?= ($section === "Audio Engineering") ? 'selected' : '' ?>>Audio Engineering</option>
                             </select>
                         </div>
                         <div class="me-3">

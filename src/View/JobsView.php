@@ -11,6 +11,8 @@
                     <thead>
                         <td><strong>Title</strong></td>
                         <td><strong>Section</strong></td>
+                        <td><strong>Time Model</strong></td>
+                        <td><strong>Location</strong></td>
                         <td><strong>Date</strong></td>
                         <td></td>
                         <td></td>
@@ -20,6 +22,8 @@
                 ?>
                     <tr>
                         <td><?= $job['title'] ?></td>
+                        <td><?= $job['time_model'] ?></td>
+                        <td><?= $job['location'] ?></td>
                         <td><?= $job['section'] ?></td>
                         <td><?= $job['date_created'] ?></td>
                         <td><a class="edit-link" href="/jobs/edit/<?= $job['id'] ?>">edit</a></td>
