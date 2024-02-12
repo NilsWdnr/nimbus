@@ -13,6 +13,17 @@
                     <input class="d-block" type="password" id="old_password" name="old_password">
                 </div>
                 <input class="btn btn-danger mt-3" type="submit" id="save_password" name="save_password" value="save password">
+                <?php
+                if (isset($_GET['passwordSuccess'])) {
+                ?>
+                    <div class="alert alert-success mt-4">Your password has been changed successfully</div>
+                <?php
+                } else if (isset($_GET['passwordWrong'])) {
+                ?>
+                    <div class="alert alert-danger mt-4">Old password incorrect</div>
+                <?php
+                }
+                ?>
             </form>
         </div>
     </div>

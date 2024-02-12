@@ -25,7 +25,7 @@ final class Settings extends Controller {
     public function save_password(): void
     {
         if($this->user->verify_password($_SESSION['login']['username'],$_POST['old_password'])){
-            $this->redirect('/settings/password_changed');
+            $this->redirect('/settings?passwordSuccess');
         } else {
             echo 'Wrong Password';
         }
