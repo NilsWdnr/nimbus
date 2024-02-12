@@ -74,6 +74,7 @@ final class Products extends Controller {
             'description' => $_POST['description'],
             'price' => (float)$_POST['price'],
             'product_type' => $_POST['product_type'],
+            'brand' => $_POST['brand']
         ];
 
         var_dump($_FILES);
@@ -107,6 +108,7 @@ final class Products extends Controller {
             'description' => $_POST['description'],
             'price' => (float)$_POST['price'],
             'product_type' => $_POST['product_type'],
+            'brand' => $_POST['brand'],
             'product_images' => $product_image,
             'date_created' => date("Y-m-d H:i:s"),
         ];

@@ -22,6 +22,7 @@ $title = isset($args['title']) ? $args['title'] : "";
 $description = isset($args['description']) ? $args['description'] : "";
 $price = isset($args['price']) ? $args['price'] : "";
 $product_type = isset($args['product_type']) ? $args['product_type'] : "";
+$brand = isset($args['brand']) ? $args['brand'] : "";
 
 ?>
 
@@ -62,6 +63,13 @@ $product_type = isset($args['product_type']) ? $args['product_type'] : "";
                                 <option value="hoodies" <?= ($product_type==="hoodies") ? 'selected' : '' ?>>Hoodie</option>
                                 <option value="shirts" <?= ($product_type==="shirts") ? 'selected' : '' ?>>Shirt</option>
                                 <option value="accessories" <?= ($product_type==="accessories") ? 'selected' : '' ?>>Accessories / Other</option>
+                            </select>
+                        </div>
+                        <div class="ms-sm-3 mt-3 mt-sm-0 mb-4 mb-sm-0">
+                            <label for="brand">Brand</label>
+                            <select class="d-block" name="brand" id="brand">
+                                <option value="'Tis Ordained" <?= ($brand==="'Tis Ordained") ? 'selected' : '' ?>>'Tis Ordained</option>
+                                <option value="NSA Games" <?= ($brand==="NSA Games") ? 'selected' : '' ?>>NSA Games</option>
                             </select>
                         </div>
                     </div>

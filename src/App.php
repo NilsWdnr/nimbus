@@ -21,25 +21,6 @@ final class App
     }
 
     // get requested controller, method and argument from url
-    // private function parse_URL(): array
-    // {
-    //     $url = filter_input(INPUT_GET, '_url') ?? '';
-    //     $url_lower = strtolower($url);
-    //     $url_parts = explode('/', $url_lower);
-
-    //     $controller = $url_parts[0] !== '' ? $url_parts[0] : 'index';
-    //     $method = isset($url_parts[1]) && $url_parts[1] !== "" ? $url_parts[1] : NULL;
-    //     $argument = isset($url_parts[2]) && $url_parts[2] !== "" ? $url_parts[2] : NULL;
-
-    //     $request = [
-    //         'controller' => $controller,
-    //         'method' => $method,
-    //         'argument' => $argument
-    //     ];
-
-    //     return $request;
-    // }
-
     private function parse_URL(): array
     {
         $url = filter_input(INPUT_GET, '_url', FILTER_SANITIZE_URL) ?? '';
