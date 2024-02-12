@@ -335,5 +335,8 @@ body #error-message {
   padding: 25px;
   border-radius: 8px;
 }
+body #settings form {
+  border-bottom: solid 1px #303437;
+}
 
 /*# sourceMappingURL=main.css.map */

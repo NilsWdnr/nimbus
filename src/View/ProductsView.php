@@ -1,9 +1,9 @@
 <div id="products" class="content-wrapper">
     <div class="content">
         <div class="container mt-5">
-            <h3>Produkte</h3>
+            <h3>Products</h3>
 
-            <a href="/products/create"><button class="btn btn-light mt-3 mb-4">Produkt erstellen</button></a>
+            <a href="/products/create"><button class="btn btn-light mt-3 mb-4">create product</button></a>
             <?php if (count($args['products']) > 0) {
             ?>
                 <table class="table overview-table">

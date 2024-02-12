@@ -1,9 +1,9 @@
 <div id="posts" class="content-wrapper">
     <div class="content">
         <div class="container mt-5">
-            <h3>Beiträge</h3>
+            <h3>Posts</h3>
 
-            <a href="/posts/create"><button class="btn btn-light mt-3 mb-4">Beitrag erstellen</button></a>
+            <a href="/posts/create"><button class="btn btn-light mt-3 mb-4">create post</button></a>
             <?php if (count($args['posts']) > 0) {
             ?>
                 <table class="table overview-table">

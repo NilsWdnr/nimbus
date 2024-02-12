@@ -55,6 +55,7 @@ final class Api extends Controller
     {
         $products = $this->product->get_all();
         echo json_encode($products);
+        return;
     }
 
     //get single product by id
@@ -76,7 +77,7 @@ final class Api extends Controller
             }
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $post_data = json_decode(file_get_contents("php://input"), true);
-            
+
             try {
                 $jobs = $this->job->get_all_filtered($post_data);
             } catch (Throwable $e) {
@@ -98,8 +99,9 @@ final class Api extends Controller
         }
     }
 
-    public function contact(): void {
-        if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    public function contact(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             throw new Exception('Please send a post request with the form data');
             return;
         }

@@ -11,6 +11,20 @@ final class Product extends Model {
         return $products;
     }
 
+    public function get_where(string $product_type = "", string $brand = "") : array
+    {
+        $conditions = [];
+        if($product_type!==""){
+            $conditions['product_type'] = $product_type;
+        }
+        if($brand!==""){
+            $conditions['brand'] = $brand;
+        }
+        
+        $products = $this->db->select_all_where('products',$conditions);
+        return $products;
+    }
+
     public function get_by_id(int $id) : array
     {
         $product = $this->db->select_where('products','id',$id);

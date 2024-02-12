@@ -3,7 +3,7 @@
         <div class="container mt-5">
             <h3>Jobs</h3>
 
-            <a href="/jobs/create"><button class="btn btn-light mt-3 mb-4">Job erstellen</button></a>
+            <a href="/jobs/create"><button class="btn btn-light mt-3 mb-4">create job</button></a>
 
             <?php if (count($args['jobs']) > 0) {
             ?>
