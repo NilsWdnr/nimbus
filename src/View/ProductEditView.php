@@ -59,8 +59,8 @@ $product_type = isset($args['product_type']) ? $args['product_type'] : "";
                         <div class="ms-sm-3 mt-3 mt-sm-0 mb-4 mb-sm-0">
                             <label for="product-type">Product Type</label>
                             <select class="d-block" name="product_type" id="product_type">
-                                <option value="hoodie" <?= ($product_type==="hoodie") ? 'selected' : '' ?>>Hoodie</option>
-                                <option value="shirt" <?= ($product_type==="shirt") ? 'selected' : '' ?>>Shirt</option>
+                                <option value="hoodies" <?= ($product_type==="hoodies") ? 'selected' : '' ?>>Hoodie</option>
+                                <option value="shirts" <?= ($product_type==="shirts") ? 'selected' : '' ?>>Shirt</option>
                                 <option value="accessories" <?= ($product_type==="accessories") ? 'selected' : '' ?>>Accessories / Other</option>
                             </select>
                         </div>

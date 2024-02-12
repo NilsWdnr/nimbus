@@ -21,15 +21,38 @@ final class App
     }
 
     // get requested controller, method and argument from url
+    // private function parse_URL(): array
+    // {
+    //     $url = filter_input(INPUT_GET, '_url') ?? '';
+    //     $url_lower = strtolower($url);
+    //     $url_parts = explode('/', $url_lower);
+
+    //     $controller = $url_parts[0] !== '' ? $url_parts[0] : 'index';
+    //     $method = isset($url_parts[1]) && $url_parts[1] !== "" ? $url_parts[1] : NULL;
+    //     $argument = isset($url_parts[2]) && $url_parts[2] !== "" ? $url_parts[2] : NULL;
+
+    //     $request = [
+    //         'controller' => $controller,
+    //         'method' => $method,
+    //         'argument' => $argument
+    //     ];
+
+    //     return $request;
+    // }
+
     private function parse_URL(): array
     {
-        $url = filter_input(INPUT_GET, '_url') ?? '';
+        $url = filter_input(INPUT_GET, '_url', FILTER_SANITIZE_URL) ?? '';
+        $url = urldecode($url);
         $url_lower = strtolower($url);
         $url_parts = explode('/', $url_lower);
 
-        $controller = $url_parts[0] !== '' ? $url_parts[0] : 'index';
-        $method = isset($url_parts[1]) && $url_parts[1] !== "" ? $url_parts[1] : NULL;
-        $argument = isset($url_parts[2]) && $url_parts[2] !== "" ? $url_parts[2] : NULL;
+        $controller = preg_replace('/[^a-zA-Z0-9]/', '', $url_parts[0] ?? '');
+        $controller = $controller !== '' ? $controller : 'index';
+
+
+        $method = isset($url_parts[1]) && $url_parts[1] !== "" ? preg_replace('/[^a-zA-Z0-9_]/', '', $url_parts[1]) : NULL;
+        $argument = isset($url_parts[2]) && $url_parts[2] !== "" ? preg_replace('/[^a-zA-Z0-9_]/', '', $url_parts[2]) : NULL;
 
         $request = [
             'controller' => $controller,
@@ -39,6 +62,7 @@ final class App
 
         return $request;
     }
+
 
     private function load_controller(array $request): void
     {
@@ -62,17 +86,16 @@ final class App
                 $controller->index();
             }
         } catch (Throwable $e) {
-            $this->handle_error($e,$controllerName);
+            $this->handle_error($e, $controllerName);
         }
     }
 
-    private function handle_error(Throwable $e,mixed $controllerName): void
+    private function handle_error(Throwable $e, mixed $controllerName): void
     {
-        if(!is_null($controllerName)&&strtolower($controllerName)==="api"){
+        if (!is_null($controllerName) && strtolower($controllerName) === "api") {
             $this->error->api_error($e);
         } else {
             $this->error->browser_error($e);
         }
     }
-
 }
