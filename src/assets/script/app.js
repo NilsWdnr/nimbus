@@ -11,7 +11,9 @@ let sidebarVisible = false;
 
 // === INIT =========
 const init = () => {
-    DOM.mobileMenuToggle.addEventListener('click',toggleSidebar);
+    if(DOM.mobileMenuToggle!==null){
+        DOM.mobileMenuToggle.addEventListener('click',toggleSidebar);
+    }
 }
 
 // === FUNCTIONS ====

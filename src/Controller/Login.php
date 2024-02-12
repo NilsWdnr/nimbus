@@ -21,7 +21,7 @@ final class Login extends Controller
         $this->view->set_title('Login');
 
         if($_POST!==[]){
-            if($this->user->verify_password($_POST)){
+            if($this->user->verify_password($_POST['username'],$_POST['password'])){
                 $this->redirect('/dashboard');
             } else {
                 $messsage = 'Login failed, please check username and password';

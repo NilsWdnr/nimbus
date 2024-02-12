@@ -113,25 +113,26 @@ final class Database
     //update database row
     public function update_where(string $table, array $data, string $identifier, string $value): bool
     {
-        $keys = array_keys($data);
-        $values = array_values($data);
+        $update_keys = array_keys($data);
+        $update_values = array_values($data);
 
         $update_string = "";
         $i = 0;
 
-        foreach ($keys as $update_key) {
+        foreach ($update_keys as $key) {
             if ($i === 0) {
-                $update_string .= "$update_key = ?";
+                $update_string .= "$key = ?";
             } else {
-                $update_string .= ", $update_key = ?";
+                $update_string .= ", $key = ?";
             }
 
             $i++;
         }
 
-        $query_string = "UPDATE $table SET $update_string WHERE $identifier = $value";
+        $query_string = "UPDATE $table SET $update_string WHERE $identifier = ?";
+        var_dump($query_string);
         $update_query = $this->pdo->prepare($query_string);
-        return $update_query->execute($values);
+        return $update_query->execute([...$update_values,$value]);
     }
 
     public function delete_where(string $table, string $identifier, string $value): bool
