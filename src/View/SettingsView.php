@@ -3,7 +3,7 @@
         <div class="container mt-5">
             <h3>Settings</h3>
             <h4 class="mt-5">Change Password</h4>
-            <form class="pb-5" method="POST">
+            <form class="pb-5" action="/settings/save_password" method="POST">
                 <div class="mt-3">
                     <label for="new_password">New password</label>
                     <input class="d-block" type="password" id="new_password" name="new_password">
