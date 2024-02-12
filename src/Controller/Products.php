@@ -123,6 +123,7 @@ final class Products extends Controller {
         $image_dir = INCLUDE_IMAGES_DIR . DIRECTORY_SEPARATOR . 'products';
         $original_file_name = $image["name"];
         $cleaned_file_name = str_replace(' ', '_', $original_file_name);
+        $cleaned_file_name = str_replace("'","",$cleaned_file_name);
         $image_file = $image_dir . DIRECTORY_SEPARATOR . basename($cleaned_file_name);
         move_uploaded_file($image["tmp_name"], $image_file);
         return $cleaned_file_name;
