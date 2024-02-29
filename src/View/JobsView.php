@@ -37,7 +37,7 @@
 
             } else {
             ?>
-                <p>Bisher gibt es noch keine Jobs.</p>
+                <p>There are no jobs so far.</p>
             <?php
             }
             ?>

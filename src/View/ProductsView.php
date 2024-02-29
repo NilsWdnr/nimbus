@@ -31,7 +31,7 @@
             <?php
             } else {
             ?>
-                <p>Bisher gibt es noch keine Produkte.</p>
+                <p>There are no products so far.</p>
             <?php
             } ?>
         </div>

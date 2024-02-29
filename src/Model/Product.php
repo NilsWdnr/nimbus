@@ -11,6 +11,12 @@ final class Product extends Model {
         return $products;
     }
 
+    public function get_amount(int $amount) : array
+    {
+        $products = $this->db->select_limit('products',$amount,'date_created');
+        return $products;
+    }
+
     public function get_where(string $product_type = "", string $brand = "") : array
     {
         $conditions = [];

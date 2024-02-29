@@ -11,9 +11,9 @@ final class Post extends Model {
         return $posts;
     }
 
-    public function get_amount(int $id) : array
+    public function get_amount(int $amount) : array
     {
-       $posts = $this->db->select_limit('posts',$id,'date');
+       $posts = $this->db->select_limit('posts',$amount,'date');
        return $posts;
     }
 

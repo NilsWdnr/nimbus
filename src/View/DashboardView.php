@@ -1,10 +1,9 @@
 <div id="dashboard" class="content-wrapper">
     <div class="content">
         <div class="container mt-5">
-            <h2>Wilkommen, <?= $args['username'] ?></h2>
-            <a href="/posts/create"><button class="btn btn-light">Beitrag erstellen</button></a>
+            <h2>Welcome, <?= $args['username'] ?></h2>
 
-            <h3 class="mt-5">Beiträge</h3>
+            <h3 class="mt-5">Latest posts</h3>
             <?php if (count($args['posts']) > 0) {
             ?>
                 <table class="table overview-table">
@@ -30,9 +29,80 @@
             <?php
             } else {
             ?>
-                <p>Bisher gibt es noch keine Beiträge.</p>
+                <p>There are no posts so far.</p>
             <?php
             } ?>
+
+            <h3 class="mt-5">Newest Products</h3>
+            <?php if (count($args['products']) > 0) {
+            ?>
+                <table class="table overview-table">
+                    <thead>
+                        <td><strong>Title</strong></td>
+                        <td><strong>Type</strong></td>
+                        <td><strong>Date</strong></td>
+                        <td></td>
+                        <td></td>
+                    </thead>
+                    <?php
+                    foreach ($args['products'] as $product) {
+                    ?>
+                        <tr>
+                            <td><?= $product['title'] ?></td>
+                            <td><?= $product['product_type'] ?></td>
+                            <td><?= $product['date_created'] ?></td>
+                            <td><a class="edit-link" href="/products/edit/<?= $product['id'] ?>">edit</a></td>
+                            <td><a class="delete-link" href="/products/delete/<?= $product['id'] ?>">delete</a></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            <?php
+            } else {
+            ?>
+                <p>There are no products so far.</p>
+            <?php
+            }
+            ?>
+
+            <h3 class="mt-5">Latest jobs</h3>
+            <?php if (count($args['jobs']) > 0) {
+            ?>
+                <table class="table overview-table">
+                    <thead>
+                        <td><strong>Title</strong></td>
+                        <td><strong>Section</strong></td>
+                        <td><strong>Time Model</strong></td>
+                        <td><strong>Location</strong></td>
+                        <td><strong>Date</strong></td>
+                        <td></td>
+                        <td></td>
+                    </thead>
+                    <?php
+                    foreach ($args['jobs'] as $job) {
+                    ?>
+                        <tr>
+                            <td><?= $job['title'] ?></td>
+                            <td><?= $job['time_model'] ?></td>
+                            <td><?= $job['location'] ?></td>
+                            <td><?= $job['section'] ?></td>
+                            <td><?= $job['date_created'] ?></td>
+                            <td><a class="edit-link" href="/jobs/edit/<?= $job['id'] ?>">edit</a></td>
+                            <td><a class="delete-link" href="/jobs/delete/<?= $job['id'] ?>">delete</a></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
+            <?php
+            } else {
+            ?>
+                <p>There are no jobs so far.</p>
+            <?php
+            }
+            ?>
+
         </div>
     </div>
 </div>

@@ -29,7 +29,7 @@
             <?php
             } else {
             ?>
-                <p>Bisher gibt es noch keine Beiträge.</p>
+                <p>There are no posts so far.</p>
             <?php
             } ?>
         </div>
