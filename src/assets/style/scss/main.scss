@@ -196,6 +196,12 @@ body {
     }
 
     .overview-table {
+        font-size: 14px;
+
+        @media screen and (min-width: 576px) {
+            font-size: 16px;
+        }
+
         a.edit-link {
             color: #070b0b;
         }

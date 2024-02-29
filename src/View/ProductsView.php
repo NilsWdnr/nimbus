@@ -9,8 +9,8 @@
                 <table class="table overview-table">
                     <thead>
                         <td><strong>Title</strong></td>
-                        <td><strong>Type</strong></td>
-                        <td><strong>Date</strong></td>
+                        <td class="d-none d-sm-table-cell"><strong>Type</strong></td>
+                        <td class="d-none d-sm-table-cell"><strong>Date</strong></td>
                         <td></td>
                         <td></td>
                     </thead>
@@ -19,8 +19,8 @@
                     ?>
                         <tr>
                             <td><?= $product['title'] ?></td>
-                            <td><?= $product['product_type'] ?></td>
-                            <td><?= $product['date_created'] ?></td>
+                            <td class="d-none d-sm-table-cell"><?= $product['product_type'] ?></td>
+                            <td class="d-none d-sm-table-cell"><?= $product['date_created'] ?></td>
                             <td><a class="edit-link" href="/products/edit/<?= $product['id'] ?>">edit</a></td>
                             <td><a class="delete-link" href="/products/delete/<?= $product['id'] ?>">delete</a></td>
                         </tr>

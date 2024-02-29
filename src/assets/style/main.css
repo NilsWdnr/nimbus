@@ -280,6 +280,14 @@ body .content-wrapper {
     width: calc(100vw - 200px);
   }
 }
+body .overview-table {
+  font-size: 14px;
+}
+@media screen and (min-width: 576px) {
+  body .overview-table {
+    font-size: 16px;
+  }
+}
 body .overview-table a.edit-link {
   color: #070b0b;
 }
